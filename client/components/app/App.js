@@ -1,6 +1,11 @@
+// import 'bootstrap/dist/css/bootstrap-theme.css'
+import './App.scss';
 import React, { Component } from 'react';
-import TodoList from '../containers/TodoList';
-import todoStore from '../stores/todo';
+import TodoList from '../TodoList';
+import todoStore from '../../stores/todoStore';
+import TodoInput from '../todo-input/TodoInput';
+
+window.store = todoStore;
 
 class App extends Component {
   constructor(props) {
@@ -21,10 +26,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onFormSubmit}>
-          <input type="text" name="title" value={this.state.newTitle} onChange={this.onInputChange}/>
-        </form>
+
+      <div className="container">
+        <div className="jumbotron">
+          <h3>Amasing to-do app</h3>
+          <p>Easy to add, easy to order</p>
+        </div>
+
+        <TodoInput/>
         <TodoList store={todoStore}/>
       </div>
     );
